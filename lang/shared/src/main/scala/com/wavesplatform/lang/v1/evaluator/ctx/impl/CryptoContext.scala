@@ -150,8 +150,8 @@ object CryptoContext {
         ("proof", BYTESTR, "proof bytes"),
         ("inputs", BYTESTR, "public inputs")
       ) {
-        case CONST_BYTESTR(root) :: CONST_BYTESTR(proof) :: CONST_BYTESTR(value) :: Nil =>
-          Right(CONST_BOOLEAN(true))
+        case CONST_BYTESTR(vk) :: CONST_BYTESTR(proof) :: CONST_BYTESTR(inputs) :: Nil =>
+          Right(CONST_BOOLEAN(groth16j.Verifier.verify(vk, proof, inputs)))
         case _ => ???
       }
 
