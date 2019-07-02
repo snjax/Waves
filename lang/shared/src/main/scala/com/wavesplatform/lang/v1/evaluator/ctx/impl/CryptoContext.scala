@@ -13,6 +13,7 @@ import com.wavesplatform.lang.v1.evaluator.FunctionIds._
 import com.wavesplatform.lang.v1.evaluator.ctx.impl.CryptoContext.{sha3256, sha3384, sha3512}
 import com.wavesplatform.lang.v1.evaluator.ctx.{BaseFunction, EvaluationContext, LazyVal, NativeFunction}
 import com.wavesplatform.lang.v1.{BaseGlobal, CTX}
+import groth16j.Verifier._
 
 object CryptoContext {
 

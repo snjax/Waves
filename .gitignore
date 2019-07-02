@@ -8,6 +8,7 @@ target
 *.tgz
 *.jar
 !third-party/yourkit/yjp-controller-api-redist.jar
+!lib/groth16j.jar
 
 # vim
 *.*~
@@ -40,3 +41,4 @@ Dockerfile
 package
 !src/package
 native
+.vscode

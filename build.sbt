@@ -28,6 +28,7 @@ lazy val lang =
     .disablePlugins(ProtocPlugin)
     .dependsOn(common % "compile;test->test")
     .settings(
+      unmanagedBase := file("./lib"),
       version := "1.0.0",
       coverageExcludedPackages := ".*",
       test in assembly := {},
