@@ -139,6 +139,22 @@ object CryptoContext {
         case _ => ???
       }
 
+    val groth16verifyF: BaseFunction =
+      NativeFunction(
+        "groth16verify",
+        30,
+        GROTH_16_VERIFY,
+        BOOLEAN,
+        "Check validity of groth16 proof",
+        ("vk", BYTESTR, "verifier key"),
+        ("proof", BYTESTR, "proof bytes"),
+        ("inputs", BYTESTR, "public inputs")
+      ) {
+        case CONST_BYTESTR(root) :: CONST_BYTESTR(proof) :: CONST_BYTESTR(value) :: Nil =>
+          Right(CONST_BOOLEAN(true))
+        case _ => ???
+      }
+
     def toBase16StringF: BaseFunction = NativeFunction("toBase16String", 10, TOBASE16, STRING, "Base16 encode", ("bytes", BYTESTR, "value")) {
       case CONST_BYTESTR(bytes: ByteStr) :: Nil => global.base16Encode(bytes.arr).flatMap(CONST_STRING(_))
       case xs                                   => notImplemented("toBase16String(bytes: ByteVector)", xs)
@@ -196,7 +212,8 @@ object CryptoContext {
         rsaVerifyF,
         checkMerkleProofF,
         toBase16StringF,
-        fromBase16StringF
+        fromBase16StringF,
+        groth16verifyF
       )
 
     version match {

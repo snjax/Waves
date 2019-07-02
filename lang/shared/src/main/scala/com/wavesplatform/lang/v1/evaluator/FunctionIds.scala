@@ -64,6 +64,8 @@ object FunctionIds {
 
   val CHECK_MERKLE_PROOF: Short = 700
 
+  val GROTH_16_VERIFY: Short = 800
+
   // Waves
   val GETTRANSACTIONBYID: Short      = 1000
   val TRANSACTIONHEIGHTBYID: Short   = 1001
